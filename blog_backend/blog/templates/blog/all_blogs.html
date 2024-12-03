@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Blogs</title>
+</head>
+<body>
+    <h1>All Blogs</h1>
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

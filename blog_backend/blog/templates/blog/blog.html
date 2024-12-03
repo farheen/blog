@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ blog.title }}</title>
+</head>
+<body>
+    <h1>{{ blog.title }}</h1>
+    <p>{{ blog.content }}</p>
+    <p>Author: {{ blog.author }}</p>
+    <p>Published Date: {{ blog.published_date }}</p>
+    <a href="{% url 'all_blogs' %}">Back to All Blogs</a>
+</body>
+</html>

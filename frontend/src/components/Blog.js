@@ -1,65 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Blog = () => {
-  const [blogs, setBlogs] = useState([]);
+    const { id } = useParams(); // Extract blog ID from the URL
+    const [blog, setBlog] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-        const fetchBlogs = async () => {
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/article/`);
-                setBlogs(res.data);
-            }
-            catch (err) {
-
-            }
+    useEffect(() => {
+        if (id) {
+            fetch(`http://127.0.0.1:8000/api/blog/${id}/`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Error fetching blog: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setBlog(data); // Set the blog data
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    setError(err.message);
+                    setLoading(false);
+                });
         }
+    }, [id]);
 
-        fetchBlogs();
-    }, []);
-
-    const getBlogs = () => {
-        let list = [];
-        let result= [];
-
-        blogs.map(blogPost => {
-            return list.push(
-        <div className="post-preview">
-            <h2 className="post-title">
-              {blogPost.title}
-            </h2>
-            <h3 className="post-subtitle">
-              {blogPost.content.substring(0, 250)} ...
-            </h3>
-          <Link to={`/blog/${blogPost.id}`} className="stretched-link">Continue reading</Link>
-          <p className="post-meta">{blogPost.date_created}</p>
-        </div>
-            );
-        });
-
-        for (let i = 0; i < list.length; i += 2) {
-            result.push(
-              <div className="container">
-                <div key={i} className='row'>
-                    <div className="col-lg-8 col-md-10 mx-auto">
-                        {list[i]}
-                    </div>
-                    <div className="col-lg-8 col-md-10 mx-auto">
-                        {list[i+1] ? list[i+1] : null}
-                    </div>
-                </div>
-              </div>
-            );
-        }
-
-        return result;
-    };
+    if (loading) return <div>Loading blog...</div>;
+    if (error) return <div>Error: {error}</div>;
 
     return (
-       <div>
-            {getBlogs()}
-      </div>
+        <div>
+            <h1>{blog.title}</h1>
+            {blog.image && <img src={blog.image} alt={blog.title} />}
+            <p>By: {blog.author}</p>
+            <p>{blog.content}</p>
+        </div>
     );
 };
 

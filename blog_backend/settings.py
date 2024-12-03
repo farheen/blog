@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'backend',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -36,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'web_blog.urls'
+ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
     {
@@ -54,17 +55,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'web_blog.wsgi.application'
+WSGI_APPLICATION = 'blog.wsgi.application'
 
 # Replace by your postgres credentials
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'YourDbName',
-        'USER': 'YourUserName',
-        'PASSWORD': 'YourPassword',
-        'HOST': 'YourHost', # db
-        'PORT': 'YourPort',
+        'NAME': 'blog',
+        'USER': 'blog_user',
+        'PASSWORD': 'your_secure_password',
+        'HOST': 'localhost', # db
+        'PORT': '5432',
     }
 }
 
@@ -104,6 +105,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Adjust this based on your project's structure
+]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/images/'
 
@@ -128,6 +134,9 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000",
 ]
 """
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React frontend URL
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
