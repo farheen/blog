@@ -21,8 +21,10 @@ from .api import ArticleViewSet, ContactViewSet, BlogViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('markdownx/', include('markdownx.urls')),
     path('blog/', include('blog.urls')),  # Include the blog app's URLs
-]
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

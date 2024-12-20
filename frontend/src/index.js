@@ -1,13 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App"; // Ensure App.js exists and is correctly configured
 
-import './css/clean-blog.css';
+// Get the root DOM element
+const container = document.getElementById("root");
 
+// Create a React root and render the application
+const root = createRoot(container);
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );

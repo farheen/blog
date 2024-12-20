@@ -1,0 +1,140 @@
+.blog-category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.blog-category-button {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.blog-category-button:hover {
+    background-color: #0056b3;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.blog-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.blog-card-content {
+    margin-top: 10px;
+}
+
+.blog-list-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.blog-list-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.blog-section {
+    margin-bottom: 3rem;
+}
+
+.blog-section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    text-align: left;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.blog-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+}
+
+.blog-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-card-content {
+    padding: 1rem;
+    text-align: left;
+}
+
+.blog-card-author {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.blog-card-abstract {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.blog-read-more {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.blog-read-more:hover {
+    background-color: #0056b3;
+}
+
+.blog-category-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.blog-category-button {
+    text-decoration: none;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.blog-category-button:hover {
+    background-color: #45a049;
+}

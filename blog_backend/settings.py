@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'backend',
     'blog',
+    'projects',
+    'markdownx',
 ]
 
 MIDDLEWARE = [
@@ -38,7 +40,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'blog.urls'
-
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -102,18 +104,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Adjust this based on your project's structure
-]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
 
-MEDIA_URL = '/images/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog_backend/media')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/images')
 
 CORS_ALLOW_HEADERS = (
         'x-requested-with',

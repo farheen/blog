@@ -21,3 +21,23 @@ class BlogView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+def blog_list(request):
+    category = request.GET.get('category', None)
+    if category:
+        blogs = Blog.objects.filter(category=category)
+    else:
+        blogs = Blog.objects.all()
+
+    blogs_data = [
+        {
+            "id": blog.id,
+            "title": blog.title,
+            "author": blog.author,
+            "abstract": blog.abstract(),
+            "image_url": blog.image.url if blog.image else None,
+            "category": blog.category,
+        }
+        for blog in blogs
+    ]
+
+    return JsonResponse(blogs_data, safe=False)
