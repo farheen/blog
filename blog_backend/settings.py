@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'backend',
     'blog',
     'projects',
+    'books',
     'markdownx',
 ]
 
