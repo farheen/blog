@@ -9,7 +9,8 @@ const Navbar = () => {
         { text: 'Home', to: '/' },
         { text: 'Blogs', to: '/blogs' },
         { text: 'Projects', to: '/projects' },
-        { text: 'Books', to: '/books' }, // Added "Books" link
+        { text: 'Books', to: '/books' },
+        { text: 'Contact', to: '/contact' }, // Added "Contact" link
     ];
 
     return (

@@ -5,9 +5,9 @@ const BlogList = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-4">
       {/* Content Wrapper */}
-      <div className="text-center">
+      <div className="text-center max-w-4xl">
         {/* Title */}
-        <h1 className="text-6xl font-extrabold text-white mb-12 drop-shadow-lg">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-12 drop-shadow-lg">
           Explore Blog Categories
         </h1>
 

@@ -26,7 +26,7 @@ const Footer = () => (
                 </span>
             </li>
           </ul>
-          <p className="copyright text-muted">Copyright &copy; Your Website 2020</p>
+          <p className="copyright text-muted">Copyright &copy; Farheen Zahara </p>
         </div>
       </div>
     </div>

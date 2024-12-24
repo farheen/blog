@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {
+  Container,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  CircularProgress,
+  Alert,
+} from '@mui/material';
 
 const BooksList = () => {
   const [books, setBooks] = useState([]);
@@ -8,12 +18,13 @@ const BooksList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/books/')
-      .then(response => {
+    axios
+      .get('http://127.0.0.1:8000/api/books/')
+      .then((response) => {
         setBooks(response.data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching books:', error);
         setError('Failed to fetch books. Please try again later.');
         setLoading(false);
@@ -25,69 +36,62 @@ const BooksList = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Books List</h1>
-      {loading && <p style={{ textAlign: 'center' }}>Loading books...</p>}
-      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
-      <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-        {books.map(book => (
-          <li
-            key={book.id}
-            style={{
-              width: '200px',
-              border: '1px solid #ddd',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-            }}
-          >
-            {book.cover_pic ? (
-              <img
-                src={book.cover_pic}
-                alt={book.title}
-                style={{
-                  width: '100%',
-                  height: '250px',
-                  objectFit: 'cover',
-                }}
-              />
-            ) : (
-              <div
-                style={{
-                  width: '100%',
-                  height: '250px',
-                  backgroundColor: '#f4f4f4',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '0.8rem',
-                  color: '#999',
-                }}
-              >
-                No Image Available
-              </div>
-            )}
-            <div style={{ padding: '10px' }}>
-              <Link
-                to={`/books/${book.id}`}
-                style={{
-                  textDecoration: 'none',
-                  fontWeight: 'bold',
-                  color: '#333',
-                  display: 'block',
-                  marginBottom: '8px',
-                }}
-              >
-                {book.title}
-              </Link>
-              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.4' }}>
-                {truncateText(book.description || 'No description available.', 100)}
-              </p>
-            </div>
-          </li>
+    <Container maxWidth="lg" style={{ padding: '20px' }}>
+      <Typography variant="h4" component="h1" align="center" gutterBottom>
+        Books List
+      </Typography>
+
+      {loading && (
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <CircularProgress />
+        </div>
+      )}
+      {error && <Alert severity="error">{error}</Alert>}
+
+      <Grid container spacing={4}>
+        {books.map((book) => (
+          <Grid item xs={12} sm={6} md={4} key={book.id}>
+            <Card>
+              {book.cover_pic ? (
+                <CardMedia
+                  component="img"
+                  height="250"
+                  image={book.cover_pic}
+                  alt={book.title}
+                />
+              ) : (
+                <div
+                  style={{
+                    height: '250px',
+                    backgroundColor: '#f4f4f4',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '0.9rem',
+                    color: '#999',
+                  }}
+                >
+                  No Image Available
+                </div>
+              )}
+              <CardContent>
+                <Typography
+                  variant="h6"
+                  component={Link}
+                  to={`/books/${book.id}`}
+                  style={{ textDecoration: 'none', color: '#333', fontWeight: 'bold' }}
+                >
+                  {book.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {truncateText(book.description || 'No description available.', 100)}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </ul>
-    </div>
+      </Grid>
+    </Container>
   );
 };
 

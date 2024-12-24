@@ -14,16 +14,37 @@ const Blog = () => {
     }, [id]);
 
     if (!blog) {
-        return <p>Loading...</p>;
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-gray-600 text-lg">Loading...</p>
+            </div>
+        );
     }
 
     return (
-        <div className="blog-detail">
-            <h1>{blog.title}</h1>
-            {blog.image_url && (
-                <img src={blog.image_url} alt={blog.title} className="blog-image" />
-            )}
-            <ReactMarkdown>{blog.content}</ReactMarkdown>
+        <div className="min-h-screen bg-gray-100 p-4">
+            <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+                {/* Blog Image */}
+                {blog.image_url && (
+                    <div className="w-full h-64 bg-gray-200">
+                        <img
+                            src={blog.image_url}
+                            alt={blog.title}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                )}
+
+                {/* Blog Content */}
+                <div className="p-6">
+                    <h1 className="text-3xl font-bold text-gray-800 mb-4">
+                        {blog.title}
+                    </h1>
+                    <div className="text-gray-600">
+                        <ReactMarkdown>{blog.content}</ReactMarkdown>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
