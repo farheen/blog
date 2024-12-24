@@ -7,6 +7,8 @@ import PersonalBlogs from "./components/PersonalBlogs";
 import TechBlogs from "./components/TechBlogs";
 import ProjectPage from "./components/ProjectsPage";
 import Navbar from "./components/Navbar";
+import BooksList from './components/BooksList';
+import BooksDetail from './components/BooksDetail';
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
         <Route path="/blogs/tech" element={<TechBlogs />} />
         {/* Project Page */}
         <Route path="/projects" element={<ProjectPage />} />
+        {/* Books page */}
+        <Route path="/books" element={<BooksList />} />
+        <Route path="/books/:id" element={<BooksDetail />} /> 
       </Routes>
     </Router>
   );

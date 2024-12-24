@@ -28,9 +28,7 @@ const TechBlogs = () => {
 
   return (
     <Container maxWidth="lg" style={{ marginTop: "30px" }}>
-      <Typography variant="h3" align="center" gutterBottom>
-        Tech Blogs
-      </Typography>
+     
 
       <Grid container spacing={isMobile ? 2 : 4}>
         {blogs.length > 0 ? (

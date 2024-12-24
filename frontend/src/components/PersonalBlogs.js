@@ -17,9 +17,7 @@ const PersonalBlogs = () => {
 
   return (
     <Container maxWidth="lg" style={{ marginTop: "30px" }}>
-      <Typography variant="h3" align="center" gutterBottom>
-        Blog List
-      </Typography>
+   
 
       <Grid container spacing={4}>
         {blogs.length > 0 ? (
