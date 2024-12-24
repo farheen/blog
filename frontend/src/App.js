@@ -12,6 +12,7 @@ import ProjectPage from "./components/ProjectsPage";
 import BooksList from "./components/BooksList";
 import BooksDetail from "./components/BooksDetail";
 import Contact from "./components/Contact"; // Replace with the actual path to your Contact component
+import Certificates from "./components/Certificates";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/books" element={<BooksList />} />
           <Route path="/books/:id" element={<BooksDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/certificates" element={<Certificates />} />
         </Routes>
       </Router>
       <Footer />

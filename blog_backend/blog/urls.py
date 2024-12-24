@@ -4,6 +4,7 @@ from django.conf import settings  # Import settings
 from django.conf.urls.static import static 
 from . import views
 from books.views import BookViewSet
+from certificates.views import CertificateListView
 from .views import BlogView, BlogListView, blog_list # This imports the view
 from projects.views import ProjectListView, ProjectDetailView
  
@@ -17,6 +18,7 @@ urlpatterns = [
     path('api/projects/', ProjectListView.as_view(), name='project-list'),  # Matches `/api/projects/`
     path('api/projects/<int:id>/', ProjectDetailView.as_view(), name='project-detail'), 
     path('api/', include('books.urls')),
+    path('api/certificates/', CertificateListView.as_view(), name='CertificateListView'),
 ]
 
 if settings.DEBUG:

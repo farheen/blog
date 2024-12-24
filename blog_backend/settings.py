@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'blog',
     'projects',
     'books',
+    'certificates',
     'markdownx',
 ]
 
