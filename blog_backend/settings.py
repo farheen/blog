@@ -1,6 +1,15 @@
 from pathlib import Path
 import os
 import psycopg2
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'postgres://blog_user:your_secure_password@localhost:5432/blog'),
+        conn_max_age=600,
+        ssl_require=True  # Ensure SSL for security
+    )
+}
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +41,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -40,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'blog.urls'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -60,18 +71,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'blog.wsgi.application'
-
-# Replace by your postgres credentials
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blog',
-        'USER': 'blog_user',
-        'PASSWORD': 'your_secure_password',
-        'HOST': 'localhost', # db
-        'PORT': '5432',
-    }
-}
 
 
 # Password validation
@@ -114,7 +113,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # settings.py
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'blog_backend/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 CORS_ALLOW_HEADERS = (
