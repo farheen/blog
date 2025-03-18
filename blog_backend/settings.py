@@ -13,7 +13,7 @@ DATABASES = {
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "profile.onrender.com").split(",")s
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "profile.onrender.com").split(",")
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
