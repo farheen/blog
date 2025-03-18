@@ -1,17 +1,19 @@
 services:
-  - name: blog-backend
-    type: web
-    env: python
-    region: oregon
-    buildCommand: |
-      pip install -r requirements.txt
-      python manage.py migrate
-      python manage.py collectstatic --noinput
-    startCommand: gunicorn blog_backend.wsgi:application
+  - type: web
+    name: blog-backend
+    runtime: python
     envVars:
       - key: DATABASE_URL
+        fromDatabase:
+          name: blog-database
+          property: connectionString
+      - key: SECRET_KEY
         sync: false
-      - key: ALLOWED_HOSTS
-        value: "your-app-name.onrender.com"
       - key: DEBUG
         value: "False"
+      - key: ALLOWED_HOSTS
+        value: "profile.onrender.com"
+    buildCommand: 
+      - pip install -r requirements.txt
+    startCommand: gunicorn blog_backend.wsgi:application
+

@@ -5,13 +5,15 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'postgres://blog_user:your_secure_password@localhost:5432/blog'),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
-        ssl_require=True  # Ensure SSL for security
+        ssl_require=True
     )
 }
 
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "your-render-domain.onrender.com").split(",")
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!

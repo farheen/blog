@@ -1,49 +1,102 @@
-# blog/management/commands/import_blogs.py
+import os
+import re
 import xml.etree.ElementTree as ET
 from django.core.management.base import BaseCommand
 from blog.models import Blog
-from datetime import datetime
+from django.utils.html import strip_tags
+from urllib.parse import urlparse, unquote
+
 
 class Command(BaseCommand):
-    help = 'Import blogs from a WordPress XML file'
+    help = "Import blogs and use existing images if available"
 
     def add_arguments(self, parser):
-        parser.add_argument('xml_file', type=str)
+        parser.add_argument("file_path", type=str, help="Path to the WordPress XML file")
 
-    def handle(self, *args, **kwargs):
-        xml_file = kwargs['xml_file']
-        tree = ET.parse(xml_file)
+    def handle(self, *args, **options):
+        file_path = options["file_path"]
+
+        if not os.path.exists(file_path):
+            self.stdout.write(self.style.ERROR(f"File not found: {file_path}"))
+            return
+
+        # Define namespaces
+        namespaces = {'content': 'http://purl.org/rss/1.0/modules/content/'}
+
+        # Parse the XML file
+        tree = ET.parse(file_path)
         root = tree.getroot()
+        channel = root.find("channel")
 
-        # Define the namespace if required
-        namespaces = {
-            'content': 'http://purl.org/rss/1.0/modules/content/',
-            'dc': 'http://purl.org/dc/elements/1.1/'
-        }
+        # Define the target folder for images
+        image_folder = "static/images/project_images"
+        os.makedirs(image_folder, exist_ok=True)
 
-        # Loop through each item (blog post) in the XML
-        for item in root.findall(".//item"):
-            title = item.find('title').text if item.find('title') is not None else 'Untitled'
-            content = item.find('content:encoded', namespaces).text if item.find('content:encoded', namespaces) is not None else 'No content available'
-            author = item.find('dc:creator', namespaces).text if item.find('dc:creator', namespaces) is not None else 'Unknown'
-            pub_date = item.find('pubDate').text
+        for item in channel.findall("item"):
+            title = item.find("title").text
+            content_encoded = item.find("content:encoded", namespaces)
 
-            # Convert pub_date to datetime object if possible
-            try:
-                published_date = datetime.strptime(pub_date, '%a, %d %b %Y %H:%M:%S %z') if pub_date else None
-            except ValueError:
-                published_date = None  # Handle invalid date formats
-
-            # Ensure we only save blogs with a title
-            if title and content:
-                blog = Blog(
-                    title=title,
-                    content=content,
-                    author=author,
-                    published_date=published_date if published_date else datetime.now(),  # Use current date if missing
-                )
-                blog.save()
-
-                self.stdout.write(self.style.SUCCESS(f'Successfully imported blog: {blog.title}'))
+            if content_encoded is not None:
+                content = content_encoded.text
             else:
-                self.stdout.write(self.style.WARNING(f'Skipping blog due to missing title or content.'))
+                content = None
+
+            published_date_raw = item.find("pubDate").text
+
+            if not title or not content:
+                self.stdout.write(self.style.WARNING(f"Skipping blog due to missing title or content."))
+                continue
+
+            # Parse published date
+            from email.utils import parsedate_to_datetime
+            try:
+                published_date = parsedate_to_datetime(published_date_raw)
+            except Exception as e:
+                self.stdout.write(self.style.ERROR(f"Failed to parse date for blog '{title}': {e}"))
+                published_date = None
+
+            # Extract images from content
+            image_urls = re.findall(r'<img[^>]+src="([^"]+)"', content)
+            updated_content = content
+
+            for url in image_urls:
+                try:
+                    # Extract filename from URL
+                    parsed_url = urlparse(url)
+                    filename = os.path.basename(parsed_url.path)
+                    filename = unquote(filename)  # Decode any URL-encoded parts
+                    save_path = os.path.join(image_folder, filename)
+
+                    # Check if the image already exists
+                    if os.path.exists(save_path):
+                        self.stdout.write(self.style.SUCCESS(f"Using existing image: {filename}"))
+                    else:
+                        # If not, download the image
+                        import requests
+                        response = requests.get(url, stream=True)
+                        response.raise_for_status()
+                        with open(save_path, "wb") as image_file:
+                            for chunk in response.iter_content(1024):
+                                image_file.write(chunk)
+                        self.stdout.write(self.style.SUCCESS(f"Downloaded image: {filename}"))
+
+                    # Update the content with the local image path
+                    local_url = f"/static/images/project_images/{filename}"
+                    updated_content = updated_content.replace(url, local_url)
+
+                except Exception as e:
+                    self.stdout.write(self.style.ERROR(f"Failed to process image {url}: {e}"))
+
+            # Strip HTML tags for plain text content if needed
+            plain_text = strip_tags(updated_content)
+
+            try:
+                # Save the blog
+                blog = Blog.objects.create(
+                    title=title,
+                    content=updated_content,
+                    published_date=published_date,
+                )
+                self.stdout.write(self.style.SUCCESS(f"Successfully imported blog '{title}'"))
+            except Exception as e:
+                self.stdout.write(self.style.ERROR(f"Failed to import blog '{title}': {e}"))

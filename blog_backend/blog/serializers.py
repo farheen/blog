@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from .models import Blog
+from .models import Blog,  BlogBlock
+
+class BlogBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlogBlock
+        fields = ['block_type', 'content', 'image', 'order']
+
 
 class BlogSerializer(serializers.ModelSerializer):
     html_content = serializers.SerializerMethodField()
