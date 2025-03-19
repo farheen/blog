@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'blog_backend.projects',
     'blog_backend.books',
     'blog_backend.certificates',
-    'markdownx',
+    'blog_backend.markdownx',
 ]
 
 MIDDLEWARE = [
