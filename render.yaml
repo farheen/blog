@@ -12,9 +12,9 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: "profile.onrender.com"
+        value: "yourdomain.onrender.com"
       - key: PORT
         value: "8000"
-    buildCommand: "pip install -r blog_backend/requirements.txt"
-    startCommand: "gunicorn --bind 0.0.0.0:8000 blog_backend.wsgi:application"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn blog_backend.wsgi:application --bind 0.0.0.0:8000"
 
