@@ -15,6 +15,6 @@ services:
         value: "yourdomain.onrender.com"
       - key: PORT
         value: "8000"
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "pip install -r blog_backend/requirements.txt"
     startCommand: "gunicorn blog_backend.wsgi:application --bind 0.0.0.0:8000"
 
