@@ -29,9 +29,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'blog_backend.blog',
-    'projects',
-    'books',
-    'certificates',
+    'blog_backend.projects',
+    'blog_backend.books',
+    'blog_backend.certificates',
     'markdownx',
 ]
 
