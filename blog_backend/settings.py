@@ -17,7 +17,11 @@ SECRET_KEY = "YourSecretKey"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "blog-backend-n1tx.onrender.com",
+    "127.0.0.1",  # Allows local development
+    "localhost",  # Allows local development
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
