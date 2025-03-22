@@ -3,16 +3,16 @@ import os
 import psycopg2
 import dj_database_url
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog',
-        'USER': 'postgres',
-        'PASSWORD': 'new_pass',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL", "postgres://postgres:new_pass@localhost:5432/postgres"),
+        conn_max_age=600,
+        ssl_require=os.getenv("RENDER", False)
+    )
 }
+
+
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "profile.onrender.com").split(",")
