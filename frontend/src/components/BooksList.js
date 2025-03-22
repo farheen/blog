@@ -20,7 +20,7 @@ const BooksList = () => {
 
   useEffect(() => {
     axios
-      .get("${apiBaseUrl}")
+      .get("${apiBaseUrl}/api/books/")
       .then((response) => {
         setBooks(response.data);
         setLoading(false);
