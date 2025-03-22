@@ -3,7 +3,7 @@ import "../css/ProjectTile.css";
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const ProjectTile = ({ title, image, code_url, blog_url }) => {
-  const backendUrl = `${REACT_APP_API_URL}`;
+  const backendUrl = `${apiBaseUrl}`;
   const imageUrl = image ? `${backendUrl}${image}` : null;
 
   return (
