@@ -1,3 +1,6 @@
+build:
+  env:
+    - PYTHONPATH: src
 services:
   - type: web
     name: blog-backend

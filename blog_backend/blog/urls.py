@@ -17,7 +17,7 @@ urlpatterns = [
     path('api/blog/category/', views.blog_list, name='filtered_blog_list'),
     path('api/projects/', ProjectListView.as_view(), name='project-list'),  # Matches `/api/projects/`
     path('api/projects/<int:id>/', ProjectDetailView.as_view(), name='project-detail'), 
-    path('api/', include('books.urls')),
+    path('api/', include('blog_backend.books.urls')),
     path('api/certificates/', CertificateListView.as_view(), name='CertificateListView'),
 ]
 
