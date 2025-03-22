@@ -9,6 +9,7 @@ from blog_backend.blog.views import BlogView, BlogListView, blog_list # This imp
 from blog_backend.projects.views import ProjectListView, ProjectDetailView
  
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('markdownx/', include('markdownx.urls')), 
     path('api/blog/', BlogListView.as_view(), name='api_blog'),
