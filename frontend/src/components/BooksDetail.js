@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const BookDetail = () => {
   const { id } = useParams(); // Get the book ID from the URL

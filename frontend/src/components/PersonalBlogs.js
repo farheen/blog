@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Grid, Card, CardContent, Typography, CardActionArea } from "@mui/material";
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const PersonalBlogs = () => {
   const [blogs, setBlogs] = useState([]);

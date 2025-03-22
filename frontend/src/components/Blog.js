@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const Blog = () => {
     const { id } = useParams();

@@ -11,6 +11,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import ReactMarkdown from "react-markdown"; // Import react-markdown
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const TechBlogs = () => {
   const [blogs, setBlogs] = useState([]);

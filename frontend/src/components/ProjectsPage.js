@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProjectTile from "./ProjectTile";
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);

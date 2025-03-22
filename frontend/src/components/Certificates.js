@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const Certificates = () => {
   const [certificates, setCertificates] = useState([]);
