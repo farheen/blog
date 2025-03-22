@@ -1,6 +1,6 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
-from .models import Project
+from blog_backend.projects.models import Project
 
 @admin.register(Project)
 class ProjectAdmin(MarkdownxModelAdmin):

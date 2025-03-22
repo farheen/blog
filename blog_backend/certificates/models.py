@@ -7,6 +7,8 @@ class Certificate(models.Model):
     date_issued = models.DateField()
     certificate_link = models.URLField()
     thumbnail = models.ImageField(upload_to='certificates/thumbnails/', blank=True, null=True)
+    class Meta:
+        app_label = 'blog_backend.certificates'
 
     def __str__(self):
         return self.title

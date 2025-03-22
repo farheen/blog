@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Certificate
-from .serializers import CertificateSerializer
+from blog_backend.certificates.models import Certificate
+from blog_backend.certificates.serializers import CertificateSerializer
 
 class CertificateListView(APIView):
     def get(self, request):

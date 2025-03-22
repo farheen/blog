@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Project
-from .serializers import ProjectSerializer
+from blog_backend.projects.models import Project
+from blog_backend.projects.serializers import ProjectSerializer
 
 class ProjectListView(APIView):
     def get(self, request):

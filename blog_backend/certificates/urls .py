@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CertificateListView
+from blog_backend.certificates.views import CertificateListView
 router = DefaultRouter()
 urlpatterns = [
     path('certificates/', CertificateListView.as_view(), name='CertificateListView'),

@@ -4,7 +4,14 @@ import psycopg2
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'postgres',
+        'PASSWORD': 'new_pass',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
@@ -32,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'blog_backend.blog',
+    'blog_backend.blog.apps.BlogConfig',
     'blog_backend.projects',
     'blog_backend.books',
     'blog_backend.certificates',
@@ -52,7 +59,8 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = 'blog.urls'
+ROOT_URLCONF = 'blog_backend.blog.urls'
+WSGI_APPLICATION = 'blog_backend.wsgi.application'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TEMPLATES = [
     {
@@ -70,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog.wsgi.application'
+
 
 
 # Password validation

@@ -1,7 +1,7 @@
 # books/views.py
 from rest_framework import viewsets
-from .models import Book
-from .serializers import BookSerializer
+from blog_backend.books.models import Book
+from blog_backend.books.serializers import BookSerializer
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()

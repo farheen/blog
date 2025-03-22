@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Blog
+from blog_backend.blog.models import Blog
 from .serializers import BlogSerializer
 
 class BlogListView(APIView):

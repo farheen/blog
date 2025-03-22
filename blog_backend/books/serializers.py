@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book
+from blog_backend.books.models import Book
 
 class BookSerializer(serializers.ModelSerializer):
     cover_pic = serializers.ImageField(required=False)  # Include this field
