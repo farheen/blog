@@ -28,7 +28,7 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
-    'django.contrib.blog_backend.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'blog_backend.blog.apps.BlogConfig',
     'blog_backend.projects',
     'blog_backend.books',
-    'blog_backend.certificates',
+    'certificates',
     'markdownx',
 ]
 
