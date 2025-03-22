@@ -5,7 +5,7 @@ const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch(REACT_APP_API_URL"/api/projects/")
+    fetch("${REACT_APP_API_URL}/api/projects/")
       .then((response) => response.json())
       .then((data) => setProjects(data))
       .catch((error) => console.error("Error fetching projects:", error));

@@ -17,7 +17,7 @@ const TechBlogs = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
 
   useEffect(() => {
-    fetch(REACT_APP_API_URL"/api/blog/")
+    fetch("${REACT_APP_API_URL}/api/blog/")
       .then((response) => response.json())
       .then((data) => setBlogs(data))
       .catch((error) => console.error("Error fetching blogs:", error));
