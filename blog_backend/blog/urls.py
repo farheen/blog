@@ -2,11 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings  # Import settings
 from django.conf.urls.static import static 
-from . import views
-from books.views import BookViewSet
-from certificates.views import CertificateListView
-from .views import BlogView, BlogListView, blog_list # This imports the view
-from projects.views import ProjectListView, ProjectDetailView
+from blog_backend.books.views import BookViewSet
+from blog_backend.certificates.views import CertificateListView
+from blog_backend.blog.views import BlogView, BlogListView, blog_list # This imports the view
+from blog_backend.projects.views import ProjectListView, ProjectDetailView
  
 urlpatterns = [
     path('admin/', admin.site.urls),
