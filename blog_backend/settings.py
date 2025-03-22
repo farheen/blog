@@ -138,15 +138,17 @@ CORS_ALLOW_HEADERS = (
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Production
-"""
+
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:8000",
     "http://127.0.0.1:3000",
     "blog-backend-n1tx.onrender.com",
+    "https://blog-one-eta-95.vercel.app",
 ]
-"""
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React frontend URL
+    "http://localhost:3000",  
+    "https://blog-one-eta-95.vercel.app",# React frontend URL
 ]
 
 REST_FRAMEWORK = {
