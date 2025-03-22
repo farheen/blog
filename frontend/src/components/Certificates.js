@@ -6,7 +6,7 @@ const Certificates = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/certificates/")
+    fetch(REACT_APP_API_URL"api/certificates/")
       .then((response) => response.json())
       .then((data) => {
         setCertificates(data);

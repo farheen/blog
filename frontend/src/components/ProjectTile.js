@@ -2,7 +2,7 @@ import React from "react";
 import "../css/ProjectTile.css";
 
 const ProjectTile = ({ title, image, code_url, blog_url }) => {
-  const backendUrl = "http://127.0.0.1:8000";
+  const backendUrl = REACT_APP_API_URL;
   const imageUrl = image ? `${backendUrl}${image}` : null;
 
   return (

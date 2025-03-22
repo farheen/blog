@@ -7,7 +7,7 @@ const Blog = () => {
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/blog/${id}/`)
+        fetch(REACT_APP_API_URL'/api/blog/${id}/`)
             .then((response) => response.json())
             .then((data) => setBlog(data))
             .catch((error) => console.error("Error fetching blog:", error));

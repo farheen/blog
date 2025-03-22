@@ -8,7 +8,7 @@ const BookDetail = () => {
 
   // Fetch book details
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/books/${id}/`) // Replace with your API endpoint
+    axios.get(REACT_APP_API_URL'api/books/${id}/`) // Replace with your API endpoint
       .then(response => {
         setBook(response.data);
       })

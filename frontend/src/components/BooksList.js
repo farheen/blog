@@ -19,7 +19,7 @@ const BooksList = () => {
 
   useEffect(() => {
     axios
-      .get('http://127.0.0.1:8000/api/books/')
+      .get(REACT_APP_API_URL)
       .then((response) => {
         setBooks(response.data);
         setLoading(false);
