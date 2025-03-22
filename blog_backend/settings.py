@@ -5,7 +5,8 @@ import dj_database_url
 
 
 DATABASES = {
-    'default': {
+     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME','blog'),
         'USER': os.getenv('DB_USER','postgres'),
