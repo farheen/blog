@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from blog_backend.blog.models import Blog
 from blog_backend.blog.serializers import BlogSerializer
+from . import views
 
 class BlogListView(APIView):
     def get(self, request):
