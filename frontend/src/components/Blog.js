@@ -25,15 +25,10 @@ const Blog = () => {
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
-                {blog.image && (
-                    <div className="w-full h-64 bg-gray-200">
-                        <img src={`${apiBaseUrl}${blog.image} 
-                             alt={blog.title} 
-                             className="w-full h-full object-cover" 
-                        />
-                    </div>
-                )}
-
+                <div className="p-4 bg-red-100 text-sm text-black">
+                    <p><strong>Image Path:</strong> {blog.image}</p>
+                    <p><strong>Full Image URL:</strong> {`${apiBaseUrl}${blog.image}`}</p>
+                </div>
                 {/* Blog Content */}
                 <div className="p-6">
                     <h1 className="text-3xl font-bold text-gray-800 mb-4">
