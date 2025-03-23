@@ -25,9 +25,12 @@ const Blog = () => {
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
-                <div className="p-4 bg-red-100 text-sm text-black">
-                    <p><strong>Image Path:</strong> {blog.image}</p>
-                    <p><strong>Full Image URL:</strong> {`${apiBaseUrl}${blog.image}`}</p>
+                <div className="w-full h-64 bg-gray-200">
+                    <img
+                        src="https://blog-backend-n1tx.onrender.com/media/blogs/ziro-valley.webp"
+                        alt="Hardcoded Test"
+                        className="w-full h-full object-cover"
+                    />
                 </div>
                 {/* Blog Content */}
                 <div className="p-6">
