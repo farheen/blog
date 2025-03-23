@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'blog_backend.blog.apps.BlogConfig',
     'blog_backend.projects',
     'blog_backend.books',
-    'blog_backend.certificates',
     'markdownx',
 ]
 

@@ -4,7 +4,6 @@ from django.conf import settings  # Import settings
 from django.conf.urls.static import static 
 from . import views
 from blog_backend.books.views import BookViewSet
-from blog_backend.certificates.views import CertificateListView
 from blog_backend.blog.views import BlogView, BlogListView, blog_list # This imports the view
 from blog_backend.projects.views import ProjectListView, ProjectDetailView
  
@@ -19,8 +18,7 @@ urlpatterns = [
     path('api/projects/', ProjectListView.as_view(), name='project-list'),  # Matches `/api/projects/`
     path('api/projects/<int:id>/', ProjectDetailView.as_view(), name='project-detail'), 
     path('api/', include('blog_backend.books.urls')),
-    path('api/', include('blog_backend.certificates.urls')),
-]
+    ]
 
 if settings.DEBUG:
     # Serve static and media files in development
