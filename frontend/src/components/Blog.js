@@ -27,7 +27,10 @@ const Blog = () => {
                 {/* Blog Image */}
                 {blog.image && (
                     <div className="w-full h-64 bg-gray-200">
-                        <img src={`${apiBaseUrl}${blog.image} alt={blog.title} className="w-full h-full object-cover" />
+                        <img src={`${apiBaseUrl}${blog.image} 
+                             alt={blog.title} 
+                             className="w-full h-full object-cover" 
+                        />
                     </div>
                 )}
 
