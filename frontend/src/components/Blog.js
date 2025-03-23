@@ -27,8 +27,8 @@ const Blog = () => {
                 {/* Blog Image */}
                 <div className="w-full h-64 bg-gray-200">
                     <img
-                        src="https://blog-backend-n1tx.onrender.com/media/blogs/ziro-valley.webp"
-                        alt="Hardcoded Test"
+                        src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
+                        alt={blog.title}
                         className="w-full h-full object-cover"
                     />
                 </div>
