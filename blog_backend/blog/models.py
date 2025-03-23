@@ -22,6 +22,8 @@ class Blog(models.Model):
     description = models.TextField(blank=True, null=True)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default="Tech")  # Use CATEGORY_CHOICES here
 
+    class Meta:
+    app_label = 'blog_backend.blog'
 
     def abstract(self):
         return self.content[:50] + "..."  # First 50 characters as a summary

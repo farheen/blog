@@ -29,7 +29,7 @@ const Blog = () => {
                 {blog.image_url && (
                     <div className="w-full h-64 bg-gray-200">
                         <img
-                            src={blog.image_url}
+                            src={`${apiBaseUrl}${blog.image_url}`}
                             alt={blog.title}
                             className="w-full h-full object-cover"
                         />
