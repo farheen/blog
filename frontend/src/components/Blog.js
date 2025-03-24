@@ -25,13 +25,13 @@ const Blog = () => {
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
-                    <div className="w-full max-h-[300px] bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img
-                            src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
-                            alt={blog.title}
-                            className="object-contain h-full max-w-full rounded-md shadow-sm"
-                        />
-                    </div>
+                <div className="w-full h-64 bg-gray-200">
+                    <img
+                        src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
+                        alt={blog.title}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
                 {/* Blog Content */}
                 <div className="p-6">
                     <h1 className="text-3xl font-bold text-gray-800 mb-4">
