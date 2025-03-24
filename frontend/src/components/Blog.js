@@ -25,10 +25,9 @@ const Blog = () => {
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
-                <div className="w-full max-h-[300px] overflow-hidden flex justify-center items-center bg-gray-100">
+                <div className="w-full max-h-[300px] overflow-hidden mx-auto bg-white shadow-md rounded-lg ">
                     <img
                         src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
-                        alt={blog.title}
                         className="object-contain w-full h-auto max-h-[300px] rounded"
                     />
                 </div>
