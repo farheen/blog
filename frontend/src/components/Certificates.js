@@ -29,7 +29,12 @@ const Certificates = () => {
             rel="noopener noreferrer"
             className="border rounded-lg shadow hover:shadow-lg transition"
           >
-            
+            <img
+              src={cert.img}
+              alt={cert.title}
+              className="w-full h-60 object-contain p-4"
+            />
+           
           </a>
         ))}
       </div>
