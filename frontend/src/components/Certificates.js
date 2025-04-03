@@ -4,17 +4,14 @@ const Certificates = () => {
   const certificates = [
     {
       title: "Knowledge and Human Development Authority of Dubai Attested Certificate.",
-      img: "/images/Farheen Zahara_certificate-1_page-0001.jpg",
       link: "/images/Farheen Zahara_certificate-1_page-0001.jpg",
     },
     {
       title: "London Chamber of Commerce",
-      img: "/images/DSML BCC (4)_page-0001.jpg",
       link: "/images/DSML BCC (4)_page-0001.jpg",
     },
     {
       title: "CPD",
-      img: "/images/certificate_cpd-1_page-0001.jpg",
       link: "/images/certificate_cpd-1_page-0001.jpg",
     },
     // Add more here
