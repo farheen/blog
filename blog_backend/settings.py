@@ -21,6 +21,8 @@ SECRET_KEY = "YourSecretKey"
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "www.farheenverse.com",
+    "farheenverse.com",
     "https://blog-one-eta-95.vercel.app",
     "blog-backend-n1tx.onrender.com",
     "127.0.0.1",  # Allows local development
