@@ -1,68 +1,44 @@
-import React, { useEffect, useState } from "react";
-const apiBaseUrl = process.env.REACT_APP_API_URL;
+import React from "react";
 
 const Certificates = () => {
-  const [certificates, setCertificates] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch(`${apiBaseUrl}/api/certificates/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCertificates(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching certificates:", error);
-        setError("Failed to load certificates. Please try again later.");
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <p>Loading certificates...</p>;
-  }
-
-  if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
-  }
+  const certificates = [
+    {
+      title: "Knowledge and Human Development Authority of Dubai Attested Certificate.",
+      img: "/home/farheen/workspace/BlogWebsite/frontend/public/images/Farheen Zahara_certificate-1_page-0001.jpg",
+      link: "/home/farheen/workspace/BlogWebsite/frontend/public/images/Farheen Zahara_certificate-1_page-0001.jpg",
+    },
+    {
+      title: "London Chamber of Commerce",
+      img: "/home/farheen/workspace/BlogWebsite/frontend/public/images/DSML BCC (4)_page-0001.jpg",
+      link: "/home/farheen/workspace/BlogWebsite/frontend/public/images/DSML BCC (4)_page-0001.jpg",
+    },
+    {
+      title: "CPD",
+      img: "/home/farheen/workspace/BlogWebsite/frontend/public/images/certificate_cpd-1_page-0001.jpg",
+      link: "/home/farheen/workspace/BlogWebsite/frontend/public/images/certificate_cpd-1_page-0001.jpg",
+    },
+    // Add more here
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-4xl font-bold text-center text-indigo-800 mb-6">
-        My Certificates
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {certificates.map((certificate) => (
-          <div
-            key={certificate.id}
-            className="bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition"
+    <div className="p-6 max-w-6xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6 text-center">Certificates</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {certificates.map((cert, index) => (
+          <a
+            key={index}
+            href={cert.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border rounded-lg shadow hover:shadow-lg transition"
           >
-            {certificate.thumbnail && (
-              <img
-                src={certificate.thumbnail}
-                alt={certificate.title}
-                className="w-full h-48 object-cover rounded-md"
-              />
-            )}
-            <h2 className="text-xl font-semibold text-gray-800 mt-4">
-              {certificate.title}
-            </h2>
-            <p className="text-gray-600 text-sm">{certificate.issuer}</p>
-            <p className="text-gray-700 mt-2">{certificate.description}</p>
-            <p className="text-gray-500 text-sm mt-1">
-              Issued on: {new Date(certificate.date_issued).toLocaleDateString()}
-            </p>
-            <a
-              href={certificate.certificate_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block mt-4 text-indigo-500 hover:underline"
-            >
-              View Certificate
-            </a>
-          </div>
+            <img
+              src={cert.img}
+              alt={cert.title}
+              className="w-full h-60 object-contain p-4"
+            />
+            <p className="text-center p-2 font-semibold">{cert.title}</p>
+          </a>
         ))}
       </div>
     </div>
