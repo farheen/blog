@@ -146,6 +146,8 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  
     "https://blog-one-eta-95.vercel.app",# React frontend URL
+    "www.farheenverse.com",
+    "farheenverse.com",
 ]
 
 REST_FRAMEWORK = {
