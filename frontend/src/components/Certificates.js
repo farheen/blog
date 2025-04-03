@@ -4,18 +4,18 @@ const Certificates = () => {
   const certificates = [
     {
       title: "Knowledge and Human Development Authority of Dubai Attested Certificate.",
-      img: "/public/images/Farheen Zahara_certificate-1_page-0001.jpg",
-      link: "/public/images/Farheen Zahara_certificate-1_page-0001.jpg",
+      img: "/images/Farheen Zahara_certificate-1_page-0001.jpg",
+      link: "/images/Farheen Zahara_certificate-1_page-0001.jpg",
     },
     {
       title: "London Chamber of Commerce",
-      img: "/public/images/DSML BCC (4)_page-0001.jpg",
-      link: "/public/images/DSML BCC (4)_page-0001.jpg",
+      img: "/images/DSML BCC (4)_page-0001.jpg",
+      link: "/images/DSML BCC (4)_page-0001.jpg",
     },
     {
       title: "CPD",
-      img: "/public/images/certificate_cpd-1_page-0001.jpg",
-      link: "/public/images/certificate_cpd-1_page-0001.jpg",
+      img: "/images/certificate_cpd-1_page-0001.jpg",
+      link: "/images/certificate_cpd-1_page-0001.jpg",
     },
     // Add more here
   ];
