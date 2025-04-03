@@ -139,6 +139,8 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000",
     "blog-backend-n1tx.onrender.com",
     "https://blog-one-eta-95.vercel.app",
+    "www.farheenverse.com",
+    "farheenverse.com",
 ]
 
 CORS_ALLOWED_ORIGINS = [
