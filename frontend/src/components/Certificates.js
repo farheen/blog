@@ -25,7 +25,6 @@ const Certificates = () => {
           <div key={index} className="border rounded-lg shadow-md overflow-hidden">
             <img
               src={cert.img}
-              alt={cert.title}
               className="w-full h-auto object-contain"
             />
             <div className="p-4">
