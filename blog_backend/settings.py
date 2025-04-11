@@ -21,8 +21,6 @@ SECRET_KEY = "YourSecretKey"
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "www.farheenverse.com",
-    "farheenverse.com",
     "https://blog-one-eta-95.vercel.app",
     "blog-backend-n1tx.onrender.com",
     "127.0.0.1",  # Allows local development
@@ -141,15 +139,11 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000",
     "blog-backend-n1tx.onrender.com",
     "https://blog-one-eta-95.vercel.app",
-    "www.farheenverse.com",
-    "farheenverse.com",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  
     "https://blog-one-eta-95.vercel.app",# React frontend URL
-    "www.farheenverse.com",
-    "farheenverse.com",
 ]
 
 REST_FRAMEWORK = {

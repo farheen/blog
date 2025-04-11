@@ -23,7 +23,7 @@ class Blog(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default="Tech")  # Use CATEGORY_CHOICES here
 
     class Meta:
-        app_label = 'blog_backend.blog'
+        app_label = 'blog'
 
     def abstract(self):
         return self.content[:50] + "..."  # First 50 characters as a summary
@@ -44,7 +44,7 @@ class BlogBlock(models.Model):
         ('image', 'Image'),
     ]
 
-    blog = models.ForeignKey(Blog, related_name="blocks", on_delete=models.CASCADE)
+    blog = models.ForeignKey("backend_blog.Blog", related_name="blocks", on_delete=models.CASCADE)
     block_type = models.CharField(max_length=10, choices=BLOCK_TYPES)
     content = models.TextField(blank=True, null=True)  # For text blocks
     image = models.ImageField(upload_to="blog_images/", blank=True, null=True)  # For image blocks
