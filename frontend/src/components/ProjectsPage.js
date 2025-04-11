@@ -21,6 +21,7 @@ const ProjectsPage = () => {
             <ProjectTile
               title={project.title}
               image={project.image}
+              description={project.description}
               code_url={project.code_url}
               blog_url={project.blog_url}
             />
