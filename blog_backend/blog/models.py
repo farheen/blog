@@ -44,7 +44,7 @@ class BlogBlock(models.Model):
         ('image', 'Image'),
     ]
 
-    blog = models.ForeignKey("backend_blog.Blog", related_name="blocks", on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, related_name="blocks", on_delete=models.CASCADE)
     block_type = models.CharField(max_length=10, choices=BLOCK_TYPES)
     content = models.TextField(blank=True, null=True)  # For text blocks
     image = models.ImageField(upload_to="blog_images/", blank=True, null=True)  # For image blocks
