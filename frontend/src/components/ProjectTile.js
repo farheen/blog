@@ -13,7 +13,9 @@ const ProjectTile = ({ title, image, code_url, blog_url }) => {
       )}
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
-        <h5 className="card-description">{description}</h5>
+        <div className="card-body">
+          <h5 className="card-description">{description}</h5>
+        </div>
         <div className="d-flex justify-content-between">
           {code_url && (
             <a
