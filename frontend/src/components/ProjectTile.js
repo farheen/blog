@@ -9,7 +9,7 @@ const ProjectTile = ({ title, image, code_url, blog_url }) => {
   return (
     <div className="card h-100">
       {imageUrl && (
-        <img src={imageUrl} className="card-img-top" alt={description} />
+        <img src={imageUrl} className="card-img-top" alt={project.description} />
       )}
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
