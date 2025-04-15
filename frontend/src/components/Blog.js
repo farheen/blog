@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const Blog = () => {
@@ -21,6 +22,7 @@ const Blog = () => {
             </div>
         );
     }
+
     return (
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
@@ -32,13 +34,26 @@ const Blog = () => {
                         className="w-full h-full object-cover"
                     />
                 </div>
+
                 {/* Blog Content */}
                 <div className="p-6">
                     <h1 className="text-3xl font-bold text-gray-800 mb-4">
                         {blog.title}
                     </h1>
-                    <div className="text-gray-600">
-                        <ReactMarkdown>{blog.content}</ReactMarkdown>
+                    <div className="text-gray-600 prose max-w-none">
+                        <ReactMarkdown
+                            components={{
+                                img: ({ node, ...props }) => (
+                                    <img
+                                        {...props}
+                                        className="max-w-full h-auto rounded-lg mx-auto my-4"
+                                        alt={props.alt || ""}
+                                    />
+                                ),
+                            }}
+                        >
+                            {blog.content}
+                        </ReactMarkdown>
                     </div>
                 </div>
             </div>
