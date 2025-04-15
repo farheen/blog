@@ -26,10 +26,11 @@ const Blog = () => {
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
                 <div className="w-full h-64 bg-gray-200">
-                    <img>
+                    <img
                         src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
                         alt={blog.title}
-                    <img/>
+                        className="w-full h-64 bg-gray-200"
+                    />
                 </div>
                 {/* Blog Content */}
                 <div className="p-6">
