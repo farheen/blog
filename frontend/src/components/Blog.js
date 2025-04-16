@@ -29,7 +29,7 @@ const Blog = () => {
                     <img
                         src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
                         alt={blog.title}
-                        className="w-full h-64 bg-gray-200"
+                        className="h-64 bg-gray-200"
                     />
                 </div>
                 {/* Blog Content */}
