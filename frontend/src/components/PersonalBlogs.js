@@ -28,7 +28,9 @@ const PersonalBlogs = () => {
                 <CardActionArea component={Link} to={`/blogs/${blog.id}`}>
                   <CardContent>
                     <Typography variant="h5" gutterBottom color="primary">
+                      {blog.image}
                       {blog.title}
+                     }
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
                       {blog.abstract || blog.content.substring(0, 150) + "..."}
