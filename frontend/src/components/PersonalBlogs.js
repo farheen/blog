@@ -15,6 +15,7 @@ const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const PersonalBlogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/api/blog/`)
