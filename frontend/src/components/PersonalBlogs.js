@@ -25,7 +25,7 @@ const PersonalBlogs = () => {
 
   // Ensure blogs is defined before filtering
   const personalBlogs = blogs ? blogs.filter((blog) => blog.category === "Personal") : [];
-
+  const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <Container maxWidth="lg" style={{ marginTop: "30px" }}>
    
