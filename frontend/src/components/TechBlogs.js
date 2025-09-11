@@ -48,7 +48,7 @@ const TechBlogs = () => {
                   <CardMedia
                     component="img"
                     height={isMobile ? "100" : "140"}
-                    image={`http://127.0.0.1:8000${blog.image}`} // Append base URL to the relative path
+                    image={`https://blog-backend-n1tx.onrender.com${blog.image}`} // Append base URL to the relative path
                     alt={blog.title}
                   />
                   <CardContent>
