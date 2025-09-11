@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Grid, Card, CardContent, Typography, CardActionArea } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  CardActionArea,
+  CardMedia,
+  useMediaQuery,
+} from "@mui/material";
+import ReactMarkdown from "react-markdown"; // Import react-markdown
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const PersonalBlogs = () => {
