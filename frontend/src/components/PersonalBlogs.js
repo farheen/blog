@@ -25,7 +25,7 @@ const PersonalBlogs = () => {
 
   // Ensure blogs is defined before filtering
   const personalBlogs = blogs ? blogs.filter((blog) => blog.category === "Personal") : [];
-  const isMobile = useMediaQuery("(max-width:600px)");
+  
   return (
     <Container maxWidth="lg" style={{ marginTop: "30px" }}>
    
@@ -40,7 +40,7 @@ const PersonalBlogs = () => {
                     <CardMedia
                       component="img"
                       height={isMobile ? "100" : "140"}
-                      image={`/blogs/${blog.image}`} // Append base URL to the relative path
+                      image={`http://127.0.0.1:8000${blog.image}`} // Append base URL to the relative path
                     />
                     <Typography variant="h5" gutterBottom color="primary">
                       {blog.title}
