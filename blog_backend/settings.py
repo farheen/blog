@@ -22,7 +22,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "https://blog-one-eta-95.vercel.app",
-    "blog-backend-n1tx.onrender.com",
+    "https://blog-backend-n1tx.onrender.com",
     "127.0.0.1",  # Allows local development
     "localhost",  # Allows local development
 ]
@@ -137,7 +137,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:8000",
     "http://127.0.0.1:3000",
-    "blog-backend-n1tx.onrender.com",
+    "https://blog-backend-n1tx.onrender.com",
     "https://blog-one-eta-95.vercel.app",
 ]
 
