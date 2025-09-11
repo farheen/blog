@@ -3,9 +3,7 @@ import os
 import psycopg2
 import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://blog_database_qzbd_user:v95NT1bfMjWLnPGBTrGIaubrSruG1A12@dpg-cvckaubtq21c73a06ej0-a/blog_database_qzbd'
-    )
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 
