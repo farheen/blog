@@ -27,6 +27,11 @@ const PersonalBlogs = () => {
               <Card style={{ backgroundColor: "#f9f9f9" }} elevation={3}>
                 <CardActionArea component={Link} to={`/blogs/${blog.id}`}>
                   <CardContent>
+                    <CardMedia
+                      component="img"
+                      height={isMobile ? "100" : "140"}
+                      image={`http://127.0.0.1:8000${blog.image}`} // Append base URL to the relative path
+                    />
                     <Typography variant="h5" gutterBottom color="primary">
                       {blog.title}
                     </Typography>
