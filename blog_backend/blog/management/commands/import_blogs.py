@@ -2,7 +2,7 @@ import os
 import re
 import xml.etree.ElementTree as ET
 from django.core.management.base import BaseCommand
-from blog.models import Blog
+from blog_backend.blog.models import Blog
 from django.utils.html import strip_tags
 from urllib.parse import urlparse, unquote
 
