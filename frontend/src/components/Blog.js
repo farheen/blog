@@ -4,6 +4,9 @@ import ReactMarkdown from "react-markdown";
 
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 
+// Adjust these to the exact window size you want
+const IMAGE_WINDOW = { width: 320, height: 240 }; // 320x240px fixed viewport
+
 const Blog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
@@ -17,32 +20,55 @@ const Blog = () => {
 
   if (!blog) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-600 text-lg">Loading...</p>
+      <div style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <p style={{ color: "#4B5563", fontSize: "1.125rem" }}>Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden max-w-4xl">
-        {/* Blog Image */}
-        <div className="flex justify-center my-6">
-          <div className="w-[300px] md:w-[400px] lg:w-[500px]">
+    <div style={{ minHeight: "100vh", backgroundColor: "#F3F4F6", padding: "1rem" }}>
+      <div
+        style={{
+          maxWidth: "64rem", // ~max-w-4xl
+          margin: "0 auto",
+          backgroundColor: "#FFFFFF",
+          borderRadius: "0.5rem",
+          boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
+          overflow: "hidden",
+        }}
+      >
+        {/* Fixed-window Blog Image */}
+        <div style={{ display: "flex", justifyContent: "center", margin: "1.5rem 0" }}>
+          <div
+            style={{
+              width: IMAGE_WINDOW.width,
+              height: IMAGE_WINDOW.height,
+              overflow: "hidden",           // <- crops anything outside
+              borderRadius: "0.5rem",
+              boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+              backgroundColor: "#F3F4F6",
+            }}
+          >
             <img
               src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
               alt={blog.title}
-              className="w-full h-auto rounded-lg shadow-md object-contain"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",         // <- fills the window, crops excess
+                display: "block",
+              }}
             />
           </div>
         </div>
 
         {/* Blog Content */}
-        <div className="p-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">
+        <div style={{ padding: "1.5rem" }}>
+          <h1 style={{ fontSize: "1.875rem", fontWeight: 700, color: "#1F2937", marginBottom: "1rem", textAlign: "center" }}>
             {blog.title}
           </h1>
-          <div className="text-gray-600 prose prose-lg max-w-none">
+          <div style={{ color: "#4B5563", lineHeight: 1.75 }}>
             <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
         </div>
