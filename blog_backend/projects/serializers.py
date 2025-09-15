@@ -4,5 +4,5 @@ from blog_backend.projects.models import Project
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['id','title', 'description', 'image', 'code_url', 'blog_url']
+        fields = ['id','title', 'description', 'image', 'code_url', 'blog_url', 'embed_url']
 

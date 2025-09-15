@@ -8,7 +8,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project_images/', null=True, blank=True) 
     code_url = models.URLField(max_length=500, blank=True, null=True)  # Link to the code repository
     blog_url = models.URLField(max_length=500, blank=True, null=True)  # Link to the associated blog
-    github_url = models.URLField(max_length=500, blank=True, null=True)
+    embed_url = models.URLField(max_length=500, null=True, blank=True)  # NEW
     created_at = models.DateTimeField(auto_now_add=True)  # Auto-added timestamp for creation
     updated_at = models.DateTimeField(auto_now=True)  # Auto-updated timestamp for updates
 
