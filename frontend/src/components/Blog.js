@@ -1,49 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const Blog = () => {
-    const { id } = useParams();
-    const [blog, setBlog] = useState(null);
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
 
-    useEffect(() => {
-        fetch(`${apiBaseUrl}/api/blog/${id}/`)
-            .then((response) => response.json())
-            .then((data) => setBlog(data))
-            .catch((error) => console.error("Error fetching blog:", error));
-    }, [id]);
+  useEffect(() => {
+    fetch(`${apiBaseUrl}/api/blog/${id}/`)
+      .then((response) => response.json())
+      .then((data) => setBlog(data))
+      .catch((error) => console.error("Error fetching blog:", error));
+  }, [id]);
 
-    if (!blog) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <p className="text-gray-600 text-lg">Loading...</p>
-            </div>
-        );
-    }
+  if (!blog) {
     return (
-        <div className="min-h-screen bg-gray-100 p-4">
-            <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-                {/* Blog Image */}
-                <div className="flex justify-center my-4">
-                    <img
-                        src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
-                        alt={blog.title}
-                        className="max-w-xs md:max-w-sm lg:max-w-md w-full h-auto rounded-lg shadow-md object-contain"
-                    />
-                </div>
-                {/* Blog Content */}
-                <div className="p-6">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-4">
-                        {blog.title}
-                    </h1>
-                    <div className="text-gray-600">
-                        <ReactMarkdown>{blog.content}</ReactMarkdown>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-gray-600 text-lg">Loading...</p>
+      </div>
     );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+        {/* Blog Image */}
+        <div className="flex justify-center my-4">
+          <img
+            src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
+            alt={blog.title}
+            className="max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-lg shadow-md object-contain"
+          />
+        </div>
+
+        {/* Blog Content */}
+        <div className="p-6">
+          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            {blog.title}
+          </h1>
+          <div className="text-gray-600 prose prose-lg max-w-none">
+            <ReactMarkdown>{blog.content}</ReactMarkdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Blog;
