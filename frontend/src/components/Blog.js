@@ -25,11 +25,11 @@ const Blog = () => {
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
-                <div className="w-16 h-16 bg-gray-200">
+                <div className="flex justify-center my-4">
                     <img
                         src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
                         alt={blog.title}
-                        className="w-full h-full object-cover"
+                        className="max-w-xs md:max-w-sm lg:max-w-md w-full h-auto rounded-lg shadow-md object-contain"
                     />
                 </div>
                 {/* Blog Content */}
