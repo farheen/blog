@@ -25,29 +25,24 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden max-w-4xl">
         {/* Blog Image */}
-        <div className="flex justify-center my-4">
-          <img
-            src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
-            alt={blog.title}
-            style={{
-              maxWidth: "300px",
-              width: "100%",
-              height: "auto",
-              display: "block",
-              margin: "0 auto",
-            }}
-            className="rounded-lg shadow-md object-contain"
-          />
+        <div className="flex justify-center my-6">
+          <div className="w-[300px] md:w-[400px] lg:w-[500px]">
+            <img
+              src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
+              alt={blog.title}
+              className="w-full h-auto rounded-lg shadow-md object-contain"
+            />
+          </div>
         </div>
 
         {/* Blog Content */}
         <div className="p-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">
             {blog.title}
           </h1>
-          <div className="text-gray-600">
+          <div className="text-gray-600 prose prose-lg max-w-none">
             <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
         </div>
