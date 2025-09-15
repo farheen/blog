@@ -8,6 +8,7 @@ import BlogList from "./components/BlogList";
 import Blog from "./components/Blog";
 import PersonalBlogs from "./components/PersonalBlogs";
 import TechBlogs from "./components/TechBlogs";
+import ProjectTile from "./components/ProjectTile";
 import ProjectPage from "./components/ProjectsPage";
 import BooksList from "./components/BooksList";
 import BooksDetail from "./components/BooksDetail";
