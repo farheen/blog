@@ -23,7 +23,7 @@ const Blog = () => {
     }
     return (
         <div className="min-h-screen bg-gray-100 p-4">
-            <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
                 <div className="w-16 h-16 bg-gray-200">
                     <img
