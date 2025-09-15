@@ -2,17 +2,26 @@ import React from "react";
 import "../css/ProjectTile.css";
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 
-const ProjectTile = ({ title, image, code_url, blog_url }) => {
-  const backendUrl = `${apiBaseUrl}`;
-  const imageUrl = image ? `${backendUrl}${image}` : null;
-
+const ProjectTile = ({ title, embed_url, code_url, blog_url }) => {
   return (
     <div className="card h-100">
-      {imageUrl && (
-        <img src={imageUrl} className="card-img-top" />
-      )}
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
+
+        {/* Render iframe instead of image */}
+        {embed_url && (
+          <div className="mb-3">
+            <iframe
+              title={title}
+              width="100%"
+              height="300"
+              src={embed_url}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        )}
+
         <div className="d-flex justify-content-between">
           {code_url && (
             <a
