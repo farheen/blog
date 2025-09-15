@@ -24,6 +24,7 @@ const ProjectsPage = () => {
               description={project.description}
               code_url={project.code_url}
               blog_url={project.blog_url}
+              embed_url={project.embed_url}
             />
           </div>
         ))}
