@@ -25,7 +25,7 @@ const Blog = () => {
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Blog Image */}
-                <div className="w-64 h-64 bg-gray-200">
+                <div className="w-16 h-16 bg-gray-200">
                     <img
                         src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
                         alt={blog.title}
