@@ -31,7 +31,7 @@ const Blog = () => {
           <img
             src={`https://blog-backend-n1tx.onrender.com${blog.image}`}
             alt={blog.title}
-            className="max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-lg shadow-md object-contain"
+            className="max-w-[300px] w-auto h-auto rounded-lg shadow-md object-contain"
           />
         </div>
 
@@ -40,7 +40,7 @@ const Blog = () => {
           <h1 className="text-3xl font-bold text-gray-800 mb-4">
             {blog.title}
           </h1>
-          <div className="text-gray-600 prose prose-lg max-w-none">
+          <div className="text-gray-600 blog-content">
             <ReactMarkdown>{blog.content}</ReactMarkdown>
           </div>
         </div>
