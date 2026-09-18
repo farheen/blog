@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from blog.models import Blog
-from blog.serializers import BlogSerializer
+from .models import Blog
+from .serializers import BlogSerializer
 from django.http import HttpResponse
 
 def home(request):
