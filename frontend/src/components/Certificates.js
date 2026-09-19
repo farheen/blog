@@ -24,8 +24,8 @@ const Certificates = () => {
         {certificates.map((cert, index) => (
           <div key={index} className="border rounded-lg shadow-md overflow-hidden">
             <img
-              src={cert.img}
-              className="w-full h-auto object-contain"
+              src={cert.img} 
+              className="w-full h-auto object-contain" alt=""
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{cert.title}</h2>

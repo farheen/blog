@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/ProjectTile.css";
-const apiBaseUrl = process.env.REACT_APP_API_URL;
 
 const ProjectTile = ({ title, embed_url, code_url, blog_url }) => {
   return (
