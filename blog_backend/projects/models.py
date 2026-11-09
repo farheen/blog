@@ -9,6 +9,7 @@ class Project(models.Model):
     code_url = models.URLField(max_length=500, blank=True, null=True)  # Link to the code repository
     blog_url = models.URLField(max_length=500, blank=True, null=True)  # Link to the associated blog
     embed_url = models.URLField(max_length=500, null=True, blank=True)  # NEW
+    github_url = models.URLField(max_length=500, blank=True, null=True)  # Legacy column, kept so no data is dropped
     created_at = models.DateTimeField(auto_now_add=True)  # Auto-added timestamp for creation
     updated_at = models.DateTimeField(auto_now=True)  # Auto-updated timestamp for updates
 

@@ -78,3 +78,19 @@
 .blog-button:hover {
     background-color: #0056b3;
 }
+
+/* Markdown description inside project cards */
+.project-description h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 1.25rem 0 0.5rem;
+}
+
+.project-description ul {
+    padding-left: 1.25rem;
+}
+
+.project-description li {
+    margin-bottom: 0.4rem;
+}

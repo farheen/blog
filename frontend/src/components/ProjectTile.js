@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import "../css/ProjectTile.css";
 
-const ProjectTile = ({ title, embed_url, code_url, blog_url }) => {
+const apiBaseUrl = process.env.REACT_APP_API_URL;
+
+const ProjectTile = ({ title, image, description, embed_url, code_url, blog_url }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
+
+  // The first paragraph is the summary; the rest is shown on "Read more"
+  const [summary, ...rest] = (description || "").trim().split(/\r?\n\s*\r?\n/);
+  const hasMore = rest.length > 0;
+
   return (
-    <div className="card h-100">
-      <div className="card-body">
+    <div className="card h-100 shadow-sm" style={{ borderRadius: "12px", overflow: "hidden" }}>
+      {/* Render iframe if there's an embed, otherwise the project image */}
+      {!embed_url && image && !imageFailed && (
+        <img
+          src={`${apiBaseUrl}${image}`}
+          alt={title}
+          className="card-img-top"
+          style={{ height: "240px", objectFit: "cover" }}
+          onError={() => setImageFailed(true)}
+        />
+      )}
+
+      <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
 
-        {/* Render iframe instead of image */}
         {embed_url && (
           <div className="mb-3">
             <iframe
@@ -21,7 +41,22 @@ const ProjectTile = ({ title, embed_url, code_url, blog_url }) => {
           </div>
         )}
 
-        <div className="d-flex justify-content-between">
+        {description && (
+          <div className="project-description text-secondary mb-3">
+            <ReactMarkdown>{expanded ? description : summary}</ReactMarkdown>
+            {hasMore && (
+              <button
+                type="button"
+                className="btn btn-link p-0"
+                onClick={() => setExpanded(!expanded)}
+              >
+                {expanded ? "Show less" : "Read more"}
+              </button>
+            )}
+          </div>
+        )}
+
+        <div className="d-flex justify-content-between mt-auto">
           {code_url && (
             <a
               href={code_url}
