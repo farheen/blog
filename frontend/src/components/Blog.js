@@ -69,7 +69,19 @@ const Blog = () => {
             {blog.title}
           </h1>
           <div style={{ color: "#4B5563", lineHeight: 1.75 }}>
-            <ReactMarkdown>{blog.content}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                img: ({ node, ...props }) => (
+                  <img
+                    {...props}
+                    alt={props.alt || ""}
+                    style={{ maxWidth: "100%", height: "auto", borderRadius: "0.5rem", display: "block", margin: "1rem auto" }}
+                  />
+                ),
+              }}
+            >
+              {blog.content}
+            </ReactMarkdown>
           </div>
         </div>
       </div>
