@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { Dialog, DialogContent, DialogTitle, IconButton, useMediaQuery } from "@mui/material";
+import demos from "../demos";
 import "../css/ProjectTile.css";
 
 const apiBaseUrl = process.env.REACT_APP_API_URL;
@@ -7,6 +9,10 @@ const apiBaseUrl = process.env.REACT_APP_API_URL;
 const ProjectTile = ({ title, image, description, embed_url, code_url, blog_url }) => {
   const [expanded, setExpanded] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const demo = demos[title];
+  const Demo = demo && demo.component;
 
   // The first paragraph is the summary; the rest is shown on "Read more"
   const [summary, ...rest] = (description || "").trim().split(/\r?\n\s*\r?\n/);
@@ -56,6 +62,12 @@ const ProjectTile = ({ title, image, description, embed_url, code_url, blog_url 
           </div>
         )}
 
+        {demo && (
+          <button type="button" className="btn btn-warning w-100 mb-3 fw-semibold" onClick={() => setDemoOpen(true)}>
+            ▶ Try it live: {demo.label}
+          </button>
+        )}
+
         <div className="d-flex justify-content-between mt-auto">
           {code_url && (
             <a
@@ -79,6 +91,18 @@ const ProjectTile = ({ title, image, description, embed_url, code_url, blog_url 
           )}
         </div>
       </div>
+
+      {demo && (
+        <Dialog open={demoOpen} onClose={() => setDemoOpen(false)} fullWidth maxWidth="md" fullScreen={isMobile}>
+          <DialogTitle style={{ paddingRight: 56 }}>
+            {title}
+            <IconButton aria-label="Close" onClick={() => setDemoOpen(false)} style={{ position: "absolute", right: 8, top: 8 }}>
+              ✕
+            </IconButton>
+          </DialogTitle>
+          <DialogContent dividers>{demoOpen && <Demo />}</DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };
