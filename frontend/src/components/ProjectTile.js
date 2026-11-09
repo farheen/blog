@@ -20,7 +20,7 @@ const ProjectTile = ({ title, image, description, embed_url, code_url, blog_url 
           src={`${apiBaseUrl}${image}`}
           alt={title}
           className="card-img-top"
-          style={{ height: "240px", objectFit: "cover" }}
+          style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
           onError={() => setImageFailed(true)}
         />
       )}
