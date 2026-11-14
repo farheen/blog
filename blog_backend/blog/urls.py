@@ -4,7 +4,7 @@ from django.conf import settings  # Import settings
 from django.conf.urls.static import static 
 from . import views
 from blog_backend.books.views import BookViewSet
-from blog_backend.blog.views import BlogView, BlogListView, blog_list # This imports the view
+from blog_backend.blog.views import BlogView, BlogListView, blog_list, share_blog # This imports the view
 from blog_backend.projects.views import ProjectListView, ProjectDetailView
  
 urlpatterns = [
@@ -13,6 +13,7 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')), 
     path('api/blog/', BlogListView.as_view(), name='api_blog'),
     path('api/blog/<int:id>/', BlogView.as_view(), name='blog'), 
+    path('share/blog/<int:id>/', share_blog, name='share_blog'),
     path('api/blog/', views.blog_list, name='blog_list'),
     path('api/blog/category/', views.blog_list, name='filtered_blog_list'),
     path('api/projects/', ProjectListView.as_view(), name='project-list'),  # Matches `/api/projects/`

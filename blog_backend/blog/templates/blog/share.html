@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ blog.title }}</title>
+    <meta name="description" content="{{ summary }}">
+    <link rel="canonical" href="{{ post_url }}">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fiercely Independent">
+    <meta property="og:title" content="{{ blog.title }}">
+    <meta property="og:description" content="{{ summary }}">
+    <meta property="og:url" content="{{ share_url }}">
+    {% if image_url %}<meta property="og:image" content="{{ image_url }}">{% endif %}
+    <meta property="article:author" content="{{ blog.author }}">
+    <meta property="article:published_time" content="{{ blog.published_date|date:'c' }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ blog.title }}">
+    <meta name="twitter:description" content="{{ summary }}">
+    {% if image_url %}<meta name="twitter:image" content="{{ image_url }}">{% endif %}
+
+    <meta http-equiv="refresh" content="0; url={{ post_url }}">
+</head>
+<body>
+    <p>Opening <a href="{{ post_url }}">{{ blog.title }}</a>…</p>
+    <script>window.location.replace({{ post_url_json|safe }});</script>
+</body>
+</html>

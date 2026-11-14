@@ -117,6 +117,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # settings.py
 
+# Public address of the React frontend; share pages redirect readers here
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://blog-one-eta-95.vercel.app")
+
+# Render terminates HTTPS at its proxy; trust its header so absolute URLs use https://
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'blog_backend', 'media')
 
